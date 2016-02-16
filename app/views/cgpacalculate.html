@@ -1,0 +1,92 @@
+ 
+<div class="container follow-us-container">
+<form name="frm" novalidate>
+<div class="page-header">
+    <h1 class="text-center"><small>Enter the below details to calculate your CGPA</small></h1>
+</div>
+    <div align="center">
+        <strong><label><i>Are you a lateral entry student ? </i><input toggle-checkbox    data-on="Yes" data-off="No" ng-model="dipcheck" ng-change="updateCgpa()"  type="checkbox"></label></strong>  
+    </div> 
+    <br />
+    <div align="center">
+    <table  class="table  table-hover" >
+     
+        <thead class="thead-default">
+            <tr>
+                <th></th>
+                <th class="text-center">SGPA</th>
+                <th class="text-center">Credits Earned</th>
+                <th class="text-center">Total Credits</th>
+                <th class="text-center">CGPA</th>
+            </tr>
+        </thead>
+        <tr ng-hide="dipcheck" class="check-element animate-hide">
+            <th scope="row" class="text-primary">Semester 1</th>
+            <td><input type="text" name="sgpa1" ng-model="$parent.sgpa1" pattern= "[0-9]{1}[0]?(\.[0-9][0-9]?)?" onkeypress="return isNumber(event)" required size="4"  class="form-control input-sm" data-trigger="manual" data-type="info" data-title="SGPA format X.XX"  bs-tooltip data-bs-show="frm.sgpa1.$invalid && !frm.sgpa1.$pristine"></td>       
+            <td ><input type="text" name="ce1" ng-model="$parent.ce1" pattern= "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$"  onkeypress="return isNumber(event)" required size="4" class="form-control input-sm" data-trigger="manual" data-type="info" data-title="Enter Valid Data"  bs-tooltip data-bs-show="frm.ce1.$invalid && !frm.ce1.$pristine"></td>
+            <td><input type="text" name="tc1" ng-model="$parent.tc1" pattern= "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$"  onkeypress="return isNumber(event)"  required size="4" class="form-control input-sm"  data-trigger="manual" data-type="info" data-title="Enter Valid Data"  bs-tooltip data-bs-show="frm.tc1.$invalid && !frm.tc1.$pristine"></td>
+            <td align="center"><div ng-show="sgpa1.length && ce1.length && tc1.length" class="animated zoomIn"><button type="button" tabindex="-1" class="btn btn-default" ng-class="{ 'btn-success': cgpa0() >= 9, 'btn-primary': cgpa0() < 9 && cgpa0() >= 8, 'btn-warning': cgpa0() < 8 && cgpa0() >= 7, 'btn-danger': cgpa0() < 7 }">{{ (cgpa0()| number:2)*1 || '' }}</button></div></td>
+        </tr>
+        
+        <tr ng-hide="dipcheck" class="check-element animate-hide">
+            <th scope="row" class="text-primary">Semester 2</th>
+            <td><input type="text" name="sgpa2" ng-model="$parent.sgpa2" pattern= "[0-9]{1}[0]?(\.[0-9][0-9]?)?" title="SGPA format X.XX"  onkeypress="return isNumber(event)" required size="4" class="form-control input-sm" data-trigger="manual" data-type="info" data-title="SGPA format X.XX"  bs-tooltip data-bs-show="frm.sgpa2.$invalid && !frm.sgpa2.$pristine"></td>
+            <td><input type="text" name="ce2" ng-model="$parent.ce2" pattern= "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$" title="Enter valid data" onkeypress="return isNumber(event)"  required size="4" class="form-control input-sm" data-trigger="manual" data-type="info" data-title="Enter valid data"  bs-tooltip data-bs-show="frm.ce2.$invalid && !frm.ce2.$pristine"> </td>
+            <td><input type="text" name="tc2" ng-model="$parent.tc2" ng-model-options="{ debounce: 200 }" pattern= "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$" title="Enter valid data" onkeypress="return isNumber(event)" required size="4" class="form-control input-sm" data-trigger="manual" data-type="info" data-title="Enter valid data"  bs-tooltip data-bs-show="frm.tc2.$invalid && !frm.tc2.$pristine"></td>
+            <td align="center"><div ng-show="sgpa2.length && ce2.length && tc2.length" class="animated bounceInUp"><button type="button" tabindex="-1" class="btn btn-default" ng-class="{ 'btn-success': cgpa1() >= 9, 'btn-primary': cgpa1() < 9 && cgpa1() >= 8, 'btn-warning': cgpa1() < 8 && cgpa1() >= 7, 'btn-danger': cgpa1() < 7 }">{{ (cgpa1()| number:2)*1 || '' }}</button></div></td>
+        </tr>
+        
+        <tr>
+            <th scope="row" class="text-primary">Semester 3</th>
+            <td><input type="text" name="sgpa3" ng-model="$parent.sgpa3" pattern= "[0-9]{1}[0]?(\.[0-9][0-9]?)?" title="SGPA format X.XX"  onkeypress="return isNumber(event)" required size="4" class="form-control input-sm" data-trigger="manual" data-type="info" data-title="SGPA format X.XX"  bs-tooltip data-bs-show="frm.sgpa3.$invalid && !frm.sgpa3.$pristine"></td>
+            <td><input type="text" name="ce3" ng-model="$parent.ce3" pattern= "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$" title="Enter valid data" onkeypress="return isNumber(event)"  required size="4" class="form-control input-sm" data-trigger="manual" data-type="info" data-title="Enter valid data"  bs-tooltip data-bs-show="frm.ce3.$invalid && !frm.ce3.$pristine"></td>
+            <td><input type="text" name="tc3" ng-model="$parent.tc3" ng-model-options="{ debounce: 200 }" pattern= "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$" title="Enter valid data" onkeypress="return isNumber(event)"  required size="4" class="form-control input-sm" data-trigger="manual" data-type="info" data-title="Enter valid data"  bs-tooltip data-bs-show="frm.tc3.$invalid && !frm.tc3.$pristine"></td>
+            <td align="center"><div ng-show="sgpa3.length && ce3.length && tc3.length" class="animated bounceInRight"><button tabindex="-1" type="button" class="btn btn-default" ng-class="{ 'btn-success': cgpa2() >= 9, 'btn-primary': cgpa2() < 9 && cgpa2() >= 8, 'btn-warning': cgpa2() < 8 && cgpa2() >= 7, 'btn-danger': cgpa2() < 7 }">{{ (cgpa2() | number:2)*1 || '' }}</button></div></td>
+        </tr>
+        
+        <tr>
+            <th scope="row" class="text-primary">Semester 4</th>
+            <td><input type="text" name="sgpa4" ng-model="$parent.sgpa4" pattern= "[0-9]{1}[0]?(\.[0-9][0-9]?)?" title="SGPA format X.XX"  onkeypress="return isNumber(event)" required size="4" class="form-control input-sm" data-trigger="manual" data-type="info" data-title="SGPA format X.XX"  bs-tooltip data-bs-show="frm.sgpa4.$invalid && !frm.sgpa4.$pristine"></td>
+            <td><input type="text" name="ce4" ng-model="$parent.ce4" pattern= "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$" title="Enter valid data" onkeypress="return isNumber(event)" required size="4" class="form-control input-sm" data-trigger="manual" data-type="info" data-title="Enter valid data"  bs-tooltip data-bs-show="frm.ce4.$invalid && !frm.ce4.$pristine"></td>
+            <td><input type="text" name="tc4" ng-model="$parent.tc4" ng-model-options="{ debounce: 200 }" pattern= "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$" title="Enter valid data" onkeypress="return isNumber(event)" required size="4" class="form-control input-sm" data-trigger="manual" data-type="info" data-title="Enter valid data"  bs-tooltip data-bs-show="frm.tc4.$invalid && !frm.tc4.$pristine"></td>
+            <td align="center"><div ng-show="sgpa4.length && ce4.length && tc4.length" class="animated bounceInDown"><button tabindex="-1" type="button" class="btn btn-default" ng-class="{ 'btn-success': cgpa3() >= 9, 'btn-primary': cgpa3() < 9 && cgpa3() >= 8, 'btn-warning': cgpa3() < 8 && cgpa3() >= 7, 'btn-danger': cgpa3() < 7 }">{{ (cgpa3() | number:2)*1 || '' }}</button></div></td>
+        </tr>
+        
+        <tr>
+            <th scope="row" class="text-primary">Semester 5</th>
+            <td><input type="text" name="sgpa5" ng-model="$parent.sgpa5" pattern= "[0-9]{1}[0]?(\.[0-9][0-9]?)?" title="SGPA format X.XX"  onkeypress="return isNumber(event)" required size="4" class="form-control input-sm" data-trigger="manual" data-type="info" data-title="SGPA format X.XX"  bs-tooltip data-bs-show="frm.sgpa5.$invalid && !frm.sgpa5.$pristine"></td>
+            <td><input type="text" name="ce5" ng-model="$parent.ce5" pattern= "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$" title="Enter valid data" onkeypress="return isNumber(event)" required size="4" class="form-control input-sm" data-trigger="manual" data-type="info" data-title="Enter valid data"  bs-tooltip data-bs-show="frm.ce5.$invalid && !frm.ce5.$pristine"></td>
+            <td><input type="text" name="tc5" ng-model="$parent.tc5" ng-model-options="{ debounce: 200 }" pattern= "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$" title="Enter valid data" onkeypress="return isNumber(event)" required size="4" class="form-control input-sm" data-trigger="manual" data-type="info" data-title="Enter valid data"  bs-tooltip data-bs-show="frm.tc5.$invalid && !frm.tc5.$pristine"></td>
+            <td align="center"><div ng-show="sgpa5.length && ce5.length && tc5.length" class="animated rollIn"><button type="button" tabindex="-1" class="btn btn-default" ng-class="{ 'btn-success': cgpa4() >= 9, 'btn-primary': cgpa4() < 9 && cgpa4() >= 8, 'btn-warning': cgpa4() < 8 && cgpa4() >= 7, 'btn-danger': cgpa4() < 7 }">{{ (cgpa4() | number:2)*1 || ''}}</button></div></td>
+        </tr>
+        
+        <tr>
+            <th scope="row" class="text-primary">Semester 6</th>
+            <td><input type="text" name="sgpa6" ng-model="$parent.sgpa6" pattern= "[0-9]{1}[0]?(\.[0-9][0-9]?)?" title="SGPA format X.XX"  onkeypress="return isNumber(event)" required size="4" class="form-control input-sm" data-trigger="manual" data-type="info" data-title="SGPA format X.XX"  bs-tooltip data-bs-show="frm.sgpa6.$invalid && !frm.sgpa6.$pristine"></td>
+            <td><input type="text" name="ce6" ng-model="$parent.ce6" pattern= "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$" title="Enter valid data" onkeypress="return isNumber(event)" required size="4" class="form-control input-sm" data-trigger="manual" data-type="info" data-title="Enter valid data"  bs-tooltip data-bs-show="frm.ce6.$invalid && !frm.ce6.$pristine"></td>
+            <td><input type="text" name="tc6" ng-model="$parent.tc6" ng-model-options="{ debounce: 200 }" pattern= "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$" title="Enter valid data" onkeypress="return isNumber(event)" required size="4" class="form-control input-sm" data-trigger="manual" data-type="info" data-title="Enter valid data"  bs-tooltip data-bs-show="frm.tc6.$invalid && !frm.tc6.$pristine"></td>
+            <td align="center"><div ng-show="sgpa6.length && ce6.length && tc6.length" class="animated flip"><button type="button" tabindex="-1" class="btn btn-default" ng-class="{ 'btn-success': cgpa5() >= 9, 'btn-primary': cgpa5() < 9 && cgpa5() >= 8, 'btn-warning': cgpa5() < 8 && cgpa5() >= 7, 'btn-danger': cgpa5() < 7 }">{{ (cgpa5() | number:2)*1 || '' }}</button></div></td>
+        </tr>
+        
+        <tr>
+            <th scope="row" class="text-primary">Semester 7</th>
+            <td><input type="text" name="sgpa7" ng-model="$parent.sgpa7" pattern= "[0-9]{1}[0]?(\.[0-9][0-9]?)?" title="SGPA format X.XX"  onkeypress="return isNumber(event)" required size="4" class="form-control input-sm" data-trigger="manual" data-type="info" data-title="SGPA format X.XX"  bs-tooltip data-bs-show="frm.sgpa7.$invalid && !frm.sgpa7.$pristine"></td>
+            <td><input type="text" name="ce7" ng-model="$parent.ce7" pattern= "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$" title="Enter valid data" onkeypress="return isNumber(event)"  required size="4" class="form-control input-sm" data-trigger="manual" data-type="info" data-title="Enter valid data"  bs-tooltip data-bs-show="frm.ce7.$invalid && !frm.ce7.$pristine"></td>
+            <td><input type="text" name="tc7" ng-model="$parent.tc7" ng-model-options="{ debounce: 200 }" pattern= "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$" title="Enter valid data" onkeypress="return isNumber(event)" required size="4" class="form-control input-sm" data-trigger="manual" data-type="info" data-title="Enter valid data"  bs-tooltip data-bs-show="frm.tc7.$invalid && !frm.tc7.$pristine"></td>
+            <td align="center"><div ng-show="sgpa7.length && ce7.length && tc7.length" class="animated lightSpeedIn"><button type="button" tabindex="-1" class="btn btn-default" ng-class="{ 'btn-success': cgpa6() >= 9, 'btn-primary': cgpa6() < 9 && cgpa6() >= 8, 'btn-warning': cgpa6() < 8 && cgpa6() >= 7, 'btn-danger': cgpa6() < 7 }">{{ (cgpa6() | number:2)*1 || '' }}</button></div></td>
+        </tr>
+        
+        <tr>
+            <th scope="row" class="text-primary">Semester 8</th>
+            <td><input type="text" name="sgpa8" ng-model="$parent.sgpa8" pattern= "[0-9]{1}[0]?(\.[0-9][0-9]?)?" title="SGPA format X.XX"  onkeypress="return isNumber(event)" required size="4" class="form-control input-sm" data-trigger="manual" data-type="info" data-title="SGPA format X.XX"  bs-tooltip data-bs-show="frm.sgpa8.$invalid && !frm.sgpa8.$pristine"></td>
+            <td><input type="text" name="ce8" ng-model="$parent.ce8" pattern= "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$" title="Enter valid data" onkeypress="return isNumber(event)"  required size="4" class="form-control input-sm" data-trigger="manual" data-type="info" data-title="Enter valid data"  bs-tooltip data-bs-show="frm.ce8.$invalid && !frm.ce8.$pristine"></td>
+            <td><input type="text" name="tc8" ng-model="$parent.tc8" ng-model-options="{ debounce: 200 }" pattern= "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$" title="Enter valid data" onkeypress="return isNumber(event)" required size="4" class="form-control input-sm" data-trigger="manual" data-type="info" data-title="Enter valid data"  bs-tooltip data-bs-show="frm.tc8.$invalid && !frm.tc8.$pristine"></td>
+            <td align="center"><div ng-show="sgpa8.length && ce8.length && tc8.length" class="animated bounceInLeft"><button type="button" tabindex="-1" class="btn btn-default" ng-class="{ 'btn-success': cgpa7() >= 9, 'btn-primary': cgpa7() < 9 && cgpa7() >= 8, 'btn-warning': cgpa7() < 8 && cgpa7() >= 7, 'btn-danger': cgpa7() < 7 }">{{ (cgpa7() | number:2)*1 || '' }}</button></div></td>
+        </tr>
+    </table>
+
+    </div>
+    </form>
+</div>
+
+

@@ -1,0 +1,67 @@
+<html ng-app='cgpaApp'>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/styles/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="/styles/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="/styles/error.css" />
+        <link rel="stylesheet" type="text/css" href="/styles/navbar-style.css">
+        <link rel="stylesheet" type="text/css" href="/styles/bootstrap-toggle.min.css"/>
+        <link rel="stylesheet" type="text/css" href="styles/animation.css"/>
+        <link rel="stylesheet" type="text/css" href="styles/animate.css"/>
+    </head>
+<body>
+    
+<header>
+        <nav class="navbar navbar-default" ng-controller="HeaderController">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="#/Home">CGPA Calculator</a>
+                </div>
+                <ul class="nav navbar-nav">
+                  <li ng-class="{ active: isActive('/')}"><a href="#/Home">Home</a></li>
+                  <li ng-class="{ active: isActive('/about')}"><a href="#/about">About</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <br/>
+                    <li><iframe src="http://ghbtns.com/github-btn.html?user=sachinkariyattin&repo=CGPA-Calculator&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="80" height="20"></iframe></li> 
+                    <li><iframe src="http://ghbtns.com/github-btn.html?user=sachinkariyattin&repo=CGPA-Calculator&type=follow&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="200" height="20"></iframe></li>
+                </ul>
+              </div>
+        </nav>
+</header>
+    <main>
+        <div ng-view class="slide"></div>
+    </main>
+    
+    
+  
+
+    
+    
+    <script src="scripts/jquery-2.2.0.min.js"></script>
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/angular-route.js"></script>
+    <script src="scripts/angular-animate.js"></script>
+    <script src="scripts/angular-messages.js"></script>
+    <script src="scripts/toggle-checkbox.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-strap/2.3.7/angular-strap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-strap/2.3.7/angular-strap.tpl.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/scripts/bootstrap-toggle.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/controllers/cgpaController.js"></script>
+    <script src="app/controllers/headerController.js"></script>
+    <script src="scripts/validator.js"></script>
+    <script type="text/javascript">
+    google_ad_client = "ca-pub-1678234915755521";
+    google_ad_slot = "2070397297";
+    google_ad_width = 320;
+    google_ad_height = 100;
+</script>
+<!-- Sachin-Ad -->
+<script type="text/javascript"
+src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</body>
+</html>
